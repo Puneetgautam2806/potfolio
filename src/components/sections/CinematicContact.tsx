@@ -10,6 +10,7 @@ export default function CinematicContact() {
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [copiedPhone, setCopiedPhone] = useState(false)
   const [status, setStatus] = useState<'idle' | 'transmitting' | 'success' | 'error'>('idle')
+  const [needsActivation, setNeedsActivation] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
 
@@ -29,23 +30,64 @@ export default function CinematicContact() {
     e.preventDefault()
     setStatus('transmitting')
     setErrorMessage('')
+    setNeedsActivation(false)
 
     try {
+      let succeeded = false
+      let requiresActivation = false
+
+      // Step 1: Attempt dispatch via Next.js serverless route
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      })
+      }).catch(() => null)
 
-      const result = await res.json()
-
-      if (!res.ok) {
-        throw new Error(result.error || 'Server rejected transmission')
+      if (res && res.ok) {
+        const result = await res.json().catch(() => null)
+        if (result?.success) {
+          succeeded = true
+          if (result?.needsActivation) {
+            requiresActivation = true
+          }
+        }
       }
 
-      setStatus('success')
+      // Step 2: High-reliability client-side browser fallback directly to FormSubmit
+      if (!succeeded) {
+        const clientRes = await fetch('https://formsubmit.co/ajax/pgpuneet2001@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            message: formData.message.trim(),
+            _subject: `⚡ Portfolio Inquiry from ${formData.name.trim()}`,
+            _template: 'table',
+          }),
+        }).catch(() => null)
+
+        if (clientRes && clientRes.ok) {
+          const clientData = await clientRes.json().catch(() => null)
+          succeeded = true
+          if (clientData && (clientData.success === 'false' || clientData.message?.toLowerCase().includes('activation'))) {
+            requiresActivation = true
+          }
+        }
+      }
+
+      if (succeeded) {
+        setNeedsActivation(requiresActivation)
+        setStatus('success')
+        return
+      }
+
+      throw new Error('Automated relay channel busy. Please use direct Mail or WhatsApp links below.')
     } catch (err: any) {
       console.error('Contact transmission failed:', err)
       setStatus('error')
@@ -57,6 +99,7 @@ export default function CinematicContact() {
     setFormData({ name: '', email: '', message: '' })
     setStatus('idle')
     setErrorMessage('')
+    setNeedsActivation(false)
   }
 
   return (
@@ -255,20 +298,35 @@ export default function CinematicContact() {
                     <CheckCircle2 className="w-7 h-7" />
                   </div>
 
-                  <span className="text-[11px] text-emerald-400 uppercase tracking-widest font-bold mb-1">
-                    [200 OK] TRANSMISSION RECEIVED
+                  <span className={`text-[11px] uppercase tracking-widest font-bold mb-1 ${
+                    needsActivation ? 'text-amber-400' : 'text-emerald-400'
+                  }`}>
+                    {needsActivation ? 'TRANSMISSION QUEUED // 1-CLICK ACTIVATION NEEDED' : '[200 OK] TRANSMISSION RECEIVED'}
                   </span>
                   <h4 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white mb-3 font-sans">
-                    Inquiry Dispatched Successfully
+                    {needsActivation ? 'Activate Form In Your Gmail' : 'Inquiry Dispatched Successfully'}
                   </h4>
                   <p className="text-xs text-zinc-400 max-w-md leading-relaxed mb-6 font-sans">
-                    Your packet has been forwarded to Puneet Gautam&apos;s direct inbox at <strong className="text-white">pgpuneet2001@gmail.com</strong>. Expected response latency is <strong className="text-red-400">&lt; 4 hours</strong>.
+                    {needsActivation ? (
+                      <>
+                        FormSubmit has sent a 1-click activation email to <strong className="text-white">pgpuneet2001@gmail.com</strong>. Please open your Gmail and click <strong className="text-emerald-400">&quot;Activate Form&quot;</strong> once so that all form inquiries are forwarded directly to your inbox.
+                      </>
+                    ) : (
+                      <>
+                        Your packet has been forwarded to Puneet Gautam&apos;s direct inbox at <strong className="text-white">pgpuneet2001@gmail.com</strong>. Expected response latency is <strong className="text-red-400">&lt; 4 hours</strong>.
+                      </>
+                    )}
                   </p>
 
                   <div className="p-3.5 rounded-xs bg-[#06080b] border border-white/[0.08] text-[11px] text-zinc-400 font-mono mb-6 max-w-sm w-full text-left space-y-1">
                     <div><span className="text-zinc-600">CLIENT:</span> <span className="text-white">{formData.name}</span></div>
                     <div><span className="text-zinc-600">CHANNEL:</span> <span className="text-white">{formData.email}</span></div>
-                    <div><span className="text-zinc-600">SERVER:</span> <span className="text-emerald-400">VERCEL_EDGE_FUNCTION // ACTIVE</span></div>
+                    <div>
+                      <span className="text-zinc-600">STATUS:</span>{' '}
+                      <span className={needsActivation ? 'text-amber-400' : 'text-emerald-400'}>
+                        {needsActivation ? 'AWAITING GMAIL ACTIVATION' : 'DISPATCHED_TO_INBOX'}
+                      </span>
+                    </div>
                   </div>
 
                   <button
@@ -295,7 +353,9 @@ export default function CinematicContact() {
                             Send via Mail App &rarr;
                           </a>
                           <a
-                            href="https://wa.me/917014377316"
+                            href={`https://wa.me/917014377316?text=${encodeURIComponent(
+                              `Hi Puneet, my name is ${formData.name || 'Visitor'} (${formData.email || 'N/A'}). Inquiry: ${formData.message || ''}`
+                            )}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="underline text-emerald-400 hover:text-emerald-300"
