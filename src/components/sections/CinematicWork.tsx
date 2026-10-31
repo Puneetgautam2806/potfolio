@@ -116,7 +116,7 @@ class VehicleController extends Controller
                   <span className="px-2 py-0.5 rounded-xs bg-red-950/50 border border-red-500/30 font-bold uppercase tracking-wider">
                     FLAGSHIP SYSTEM
                   </span>
-                  <span>MAR 2025 &bull; PRESENT</span>
+                  <span>AUG 2023 &bull; PRESENT</span>
                 </div>
 
                 <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-white mb-4">
@@ -124,24 +124,28 @@ class VehicleController extends Controller
                 </h3>
 
                 <p className="text-sm md:text-base text-zinc-400 leading-relaxed mb-6 font-normal">
-                  Architect and maintain the Laravel backend for an international automobile trading platform processing 
-                  <strong className="text-white"> 500+ daily vehicle listings</strong> across global export corridors. Built and secured 
-                  <strong className="text-white"> 20+ RESTful APIs</strong> with Laravel Sanctum, handling high-volume inventory syncs, dealer authentications, and multi-currency pricing calculators.
+                  Engineered and maintained the Laravel backend for an international automobile trading platform handling 
+                  <strong className="text-white"> 500+ daily vehicle listings</strong> for <strong className="text-white">10,000+ monthly active users</strong> across global export corridors. Built and delivered 
+                  <strong className="text-white"> 20+ RESTful APIs</strong> with Sanctum/JWT authentication, tuned MySQL queries cutting response times by <strong className="text-white">40%</strong>, and implemented Laravel Queues for 1,000+ daily asynchronous jobs.
                 </p>
 
                 {/* Key Technical Highlights */}
                 <div className="space-y-2.5 font-mono text-xs text-zinc-300 mb-8">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                    <span>500+ daily vehicle listings ingestion with automated image pipeline</span>
+                    <span>500+ daily vehicle listings ingestion &amp; search handling 10,000+ MAU</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                    <span>20+ production RESTful APIs with strict Sanctum token guards</span>
+                    <span>20+ production RESTful APIs with Sanctum/JWT (cut integration time by 30%)</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                    <span>Optimized MySQL indices dropping search latency below 45ms</span>
+                    <span>40% query response time reduction via MySQL indexing &amp; schema tuning</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                    <span>Laravel Queues/Jobs processing 1,000+ daily transactional notifications</span>
                   </div>
                 </div>
               </div>

@@ -2,50 +2,42 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
-import { Briefcase, Calendar, MapPin, CheckCircle2 } from 'lucide-react'
+import { Briefcase, Calendar, MapPin, CheckCircle2, GraduationCap, Award } from 'lucide-react'
 
 const EXPERIENCES = [
   {
-    role: "Laravel Developer",
+    role: "PHP Laravel Developer",
     company: "JapaneseCarTrade.com",
-    period: "Mar 2025 — Present",
+    period: "Aug 2023 — Present",
     current: true,
     location: "Jaipur, India",
-    desc: "Architect and maintain the Laravel backend for an international automobile trading platform processing 500+ vehicle listings daily. Built 20+ RESTful APIs secured with Sanctum.",
+    desc: "Engineered and maintained the Laravel backend of an international automobile trading platform handling 500+ vehicle listings daily for 10,000+ monthly active users. Modernized legacy PHP modules to MVC & SOLID architecture.",
     points: [
-      "Engineered automated vehicle listing ingestion pipeline processing 500+ units daily.",
-      "Designed and deployed 20+ RESTful endpoints with Sanctum authentication & rate limits.",
-      "Refactored complex inventory search queries, cutting database load by 35%."
+      "Engineered and maintained the Laravel backend handling 500+ vehicle listings daily for 10,000+ monthly active users.",
+      "Built and delivered 20+ RESTful APIs with JWT/Sanctum authentication; clear, documented contracts reduced frontend integration time by 30%.",
+      "Tuned critical MySQL queries through indexing and restructuring, achieving a 40% reduction in average API response time under concurrent load.",
+      "Implemented Laravel Queues and Jobs to process 1,000+ daily emails and notifications asynchronously, eliminating request timeouts.",
+      "Contributed to the migration of legacy PHP modules to Laravel (MVC, SOLID), improving code quality and maintainability.",
+      "Developed 8+ AJAX-powered web features using JavaScript, jQuery, HTML5, and CSS3, cutting page reloads by 60%.",
+      "Integrated payment gateway and notification APIs to enable secure, end-to-end transaction processing.",
+      "Troubleshot and resolved production issues across PHP/Laravel apps, MySQL queries, and API integrations to maintain 99.9%+ platform stability.",
+      "Delivered features on schedule in 2-week Agile/Scrum sprints, working closely with cross-functional developers and stakeholders."
     ],
-    tags: ["Laravel 10+", "REST APIs", "MySQL", "Queues & Jobs", "Sanctum Auth"]
-  },
-  {
-    role: "PHP Developer",
-    company: "JapaneseCarTrade.com",
-    period: "Aug 2023 — Feb 2025",
-    current: false,
-    location: "Jaipur, India",
-    desc: "Built core PHP modules for car listing management and search workflows serving 10,000+ monthly active users. Integrated third-party APIs for payments.",
-    points: [
-      "Maintained core search and filtering algorithms across 10,000+ vehicle catalogue.",
-      "Integrated third-party payment gateways and verified transactional webhooks.",
-      "Collaborated in Agile/Scrum sprints for continuous feature rollout."
-    ],
-    tags: ["PHP 8+", "AJAX", "Payment Gateways", "Scrum", "Relational DB"]
+    tags: ["PHP 8+", "Laravel", "REST APIs", "Sanctum & JWT", "MySQL Indexing", "Queues & Jobs", "AJAX / jQuery", "Agile/Scrum"]
   },
   {
     role: "PHP Web Developer",
     company: "Gradient Softech",
     period: "Oct 2022 — Jul 2023",
     current: false,
-    location: "Jaipur, India",
-    desc: "Delivered 5+ end-to-end client web applications including e-commerce platforms and CMS systems, managing the complete project lifecycle.",
+    location: "Kota, India",
+    desc: "Delivered 5+ end-to-end client web applications (e-commerce platforms, admin dashboards, CMS) from requirements to production deployment.",
     points: [
-      "Delivered 5+ turnkey commercial websites from schema design to deployment.",
-      "Configured Apache and Nginx web servers on Linux staging and production boxes.",
-      "Implemented responsive front-ends integrated tightly with backend REST APIs."
+      "Delivered 5+ end-to-end client web applications (e-commerce platforms, admin dashboards, CMS) from initial requirements to production.",
+      "Created reusable PHP component libraries adopted across multiple client projects, reducing average delivery time by 20%.",
+      "Owned the full project lifecycle independently: requirements gathering, database modeling, feature development, testing, and Linux server deployment."
     ],
-    tags: ["PHP", "MySQL", "Linux Server", "E-Commerce", "CMS", "Apache"]
+    tags: ["PHP", "MySQL", "Linux Server", "E-Commerce", "Admin Dashboards", "CMS", "Apache", "Component Libraries"]
   }
 ]
 
@@ -170,6 +162,85 @@ export default function CinematicRoadmap() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Education & Certifications Credentials Track */}
+        <div className="mt-20 pt-12 border-t border-white/[0.08]">
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-red-500 font-semibold mb-6">
+            <span className="w-1.5 h-1.5 bg-red-500 rounded-full" />
+            <span>// Academic &amp; Professional Qualifications</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono">
+            {/* MCA */}
+            <div className="p-6 rounded-sm bg-[#0a0d13] border border-white/[0.08] hover:border-white/20 transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between text-xs text-red-500 font-semibold mb-3">
+                  <span className="flex items-center gap-2">
+                    <GraduationCap className="w-4 h-4" />
+                    <span>POSTGRADUATION</span>
+                  </span>
+                  <span className="text-[10px] text-zinc-500">2024 — 2026</span>
+                </div>
+                <h4 className="text-sm md:text-base font-bold text-white uppercase mb-1 font-sans">
+                  MCA (Data Science)
+                </h4>
+                <p className="text-xs text-red-400 font-semibold mb-2">Apex University, Jaipur</p>
+                <p className="text-xs text-zinc-400 font-sans leading-relaxed">
+                  Specialization in Data Science, advanced algorithms, computational data structures, and relational schema normalization.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-white/[0.06] text-[10px] text-emerald-400">
+                STATUS: IN PROGRESS
+              </div>
+            </div>
+
+            {/* Bachelor's */}
+            <div className="p-6 rounded-sm bg-[#0a0d13] border border-white/[0.08] hover:border-white/20 transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between text-xs text-red-500 font-semibold mb-3">
+                  <span className="flex items-center gap-2">
+                    <GraduationCap className="w-4 h-4" />
+                    <span>UNDERGRADUATE</span>
+                  </span>
+                  <span className="text-[10px] text-zinc-500">2020 — 2024</span>
+                </div>
+                <h4 className="text-sm md:text-base font-bold text-white uppercase mb-1 font-sans">
+                  Bachelor&apos;s Degree, Science
+                </h4>
+                <p className="text-xs text-red-400 font-semibold mb-2">University of Kota, India</p>
+                <p className="text-xs text-zinc-400 font-sans leading-relaxed">
+                  Foundational computational logic, mathematical modeling, analytical problem-solving, and scientific methodologies.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-white/[0.06] text-[10px] text-zinc-400">
+                GRADUATED: MAY 2024
+              </div>
+            </div>
+
+            {/* Certification */}
+            <div className="p-6 rounded-sm bg-[#0a0d13] border border-white/[0.08] hover:border-white/20 transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between text-xs text-red-500 font-semibold mb-3">
+                  <span className="flex items-center gap-2">
+                    <Award className="w-4 h-4" />
+                    <span>CERTIFICATION</span>
+                  </span>
+                  <span className="text-[10px] text-zinc-500">DEC 2021</span>
+                </div>
+                <h4 className="text-sm md:text-base font-bold text-white uppercase mb-1 font-sans">
+                  PHP Web Development Training
+                </h4>
+                <p className="text-xs text-red-400 font-semibold mb-2">SRV HR Solutions</p>
+                <p className="text-xs text-zinc-400 font-sans leading-relaxed">
+                  Professional hands-on immersion in PHP web architecture, relational databases, MVC design patterns, and full-stack delivery.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-white/[0.06] text-[10px] text-emerald-400">
+                CREDENTIAL: VERIFIED
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

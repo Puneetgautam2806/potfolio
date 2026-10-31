@@ -5,28 +5,20 @@ import { motion, useScroll, useSpring } from "framer-motion"
 
 const experiences = [
   {
-    role: "Laravel Developer",
+    role: "PHP Laravel Developer",
     company: "JapaneseCarTrade.com",
-    period: "Mar 2025 – Present",
+    period: "Aug 2023 – Present",
     current: true,
-    description: "Architect and maintain the Laravel backend for an international automobile trading platform processing 500+ vehicle listings daily. Built 20+ RESTful APIs secured with Sanctum.",
-    tags: ["Laravel", "REST APIs", "MySQL", "Queues"],
-  },
-  {
-    role: "PHP Developer",
-    company: "JapaneseCarTrade.com",
-    period: "Aug 2023 – Feb 2025",
-    current: false,
-    description: "Built core PHP modules for car listing management and search workflows serving 10,000+ monthly active users. Integrated third-party APIs for payments.",
-    tags: ["PHP 8+", "AJAX", "Payment Gateways", "Scrum"],
+    description: "Engineered and maintained the Laravel backend of an international automobile trading platform handling 500+ daily vehicle listings for 10,000+ monthly active users. Delivered 20+ RESTful APIs with Sanctum/JWT and reduced query response times by 40%.",
+    tags: ["PHP 8+", "Laravel", "REST APIs", "Sanctum", "MySQL Indexing", "Queues & Jobs", "Agile/Scrum"],
   },
   {
     role: "PHP Web Developer",
     company: "Gradient Softech",
     period: "Oct 2022 – Jul 2023",
     current: false,
-    description: "Delivered 5+ end-to-end client web applications including e-commerce platforms and CMS systems, managing the complete project lifecycle.",
-    tags: ["PHP", "MySQL", "Linux Server", "E-Commerce"],
+    description: "Delivered 5+ end-to-end client web applications (e-commerce, admin dashboards, CMS) from initial requirements to production deployment. Developed reusable PHP component libraries reducing delivery time by 20%.",
+    tags: ["PHP", "MySQL", "Linux Server", "E-Commerce", "Admin Dashboards", "CMS"],
   }
 ]
 
