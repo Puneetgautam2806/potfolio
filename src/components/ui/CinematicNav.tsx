@@ -44,21 +44,27 @@ export default function CinematicNav() {
         </a>
 
         {/* Minimal Nav Anchors */}
-        <nav className="hidden lg:flex items-center gap-8 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
-          <a href="#architecture" className="hover:text-white transition-colors flex items-center gap-1.5 py-1">
-            <span className="text-red-500/70 font-semibold">01</span> System
+        <nav className="hidden xl:flex items-center gap-6 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
+          <a href="#manifesto" className="hover:text-white transition-colors flex items-center gap-1 py-1">
+            <span className="text-red-500/80 font-bold">01</span> Manifesto
           </a>
-          <a href="#work" className="hover:text-white transition-colors flex items-center gap-1.5 py-1">
-            <span className="text-red-500/70 font-semibold">02</span> Production Work
+          <a href="#simulator" className="hover:text-white transition-colors flex items-center gap-1 py-1">
+            <span className="text-red-500/80 font-bold">02</span> Simulator
           </a>
-          <a href="#roadmap" className="hover:text-white transition-colors flex items-center gap-1.5 py-1">
-            <span className="text-red-500/70 font-semibold">03</span> Timeline
+          <a href="#architecture" className="hover:text-white transition-colors flex items-center gap-1 py-1">
+            <span className="text-red-500/80 font-bold">03</span> Anatomy
           </a>
-          <a href="#specs" className="hover:text-white transition-colors flex items-center gap-1.5 py-1">
-            <span className="text-red-500/70 font-semibold">04</span> Specs
+          <a href="#work" className="hover:text-white transition-colors flex items-center gap-1 py-1">
+            <span className="text-red-500/80 font-bold">04</span> Case Studies
           </a>
-          <a href="#contact" className="hover:text-white transition-colors flex items-center gap-1.5 py-1">
-            <span className="text-red-500/70 font-semibold">05</span> Contact
+          <a href="#roadmap" className="hover:text-white transition-colors flex items-center gap-1 py-1">
+            <span className="text-red-500/80 font-bold">05</span> Timeline
+          </a>
+          <a href="#specs" className="hover:text-white transition-colors flex items-center gap-1 py-1">
+            <span className="text-red-500/80 font-bold">06</span> Specs
+          </a>
+          <a href="#contact" className="hover:text-white transition-colors flex items-center gap-1 py-1">
+            <span className="text-red-500/80 font-bold">07</span> Contact
           </a>
         </nav>
 
